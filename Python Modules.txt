@@ -1,0 +1,105 @@
+
+
+Tkinter
+	It contains a toolkit to create cross-platform GUI.
+	Most widely used basic GUI library.
+
+
+
+Pygame
+	It helps you in 2D game development.
+	It contains tools to create simple games.
+
+
+Pyglet
+	3D animation and game creation engine.
+
+
+Pillow
+	Cross-platform imaging library.
+	It supports JPEG PNG BMP TIFF GIF
+	It is also possible to create new file decoders to expand the library of f,le formats accessible
+
+
+Twisted
+	Most important tool for Network Application Developer.
+	It has a very beatiful api.
+
+
+Sys
+	It has stdin,stdout and sys.argv which allows you to pass script arguments through to python from the command line.
+
+
+Threading 
+	This module is used to run multiple process on python at the same time.
+	It is a standart library.
+
+
+Sh
+	Need to be installed.
+	subprocess wrapper that maps your system programs to python functions dynamically.
+	It help us to write shell scripts.
+
+
+Pymysql
+	Thidr party module and not included in the standart library.
+	It is used for Object Relational Mapping.
+	Provides a DB connection to mysql.
+
+
+Pycrypto
+	This is the cryptography module.
+	It provides methods of creating AES 128 bit encryption,key generators,ciphers.
+
+
+Socket
+	It basically provides access to network communication.
+	Low-level C API 
+
+
+Urllib
+	Allows you access websites via your program.
+	Download data,parse data and modify it.
+
+
+BeautifulSoup
+	You can pull data out of HTML and XML files.
+
+
+Os
+	We can use Operating System with this module.
+	such as
+	os.system() -execute shell command
+	os.uname()
+	os.mkdir()
+
+Re
+	Regex module
+
+
+
+
+
+Data Science Modules:
+
+NumPy
+	Advanced Math
+
+SciPy
+	High-level commands with NumPy.
+
+MatPlotLib
+	Plots and graphs
+
+Machine Learning Modules:
+
+Scikit-learn
+	Combine of Numpy and SciPy
+
+Tensorflow
+	Developed by Google.
+	High-level ,open-source, 
+	google use this for voice recognition,understand spoken words,identify objects in photos.
+
+
+
