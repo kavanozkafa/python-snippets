@@ -810,6 +810,237 @@ print say(say_please=True)  # Can you buy me a beer? Please! I am poor :(
 
 
 
+#########################################################################33
+
+
+
+
+import this   #prints zen of python
+x=4
+print(type(x)) #prints the type of x
+
+
+    """
+
+Importing from Python’s Standard Library
+
+os and sys      Tools for interfacing with the operating system, including navigating file directory structures and executing shell commands
+math and cmath  Mathematical functions and operations on real and complex numbers 
+itertools       Tools for constructing and interacting with iterators and generators functools  Tools that assist with functional programming
+random          Tools for generating pseudorandom numbers
+pickle          Tools for object persistence: saving objects to and loading objects from disk
+json and csv    Tools for reading JSON-formatted and CSV-formatted files
+urllib          Tools for doing HTTP and other web requests
+
+    """
+
+
+import os
+print(os.name) #isletim sistemi hakkinda bilgi verir.linux - posix, windows-nt-dos-ce, macintosh-mac
+print(os.getcwd()) # prints working directory ./home/sammas/Desktop
+print(os.listdir('/home/sammas')) # ls -l
+os.chdir(os.pardir) #changes the directory.pardir means parent directory
+os.remove('filename') #removes files
+os.system('ls') #execute teminal commands
+os.mkdir()
+os.rmdir()
+
+
+float(3) #3.0
+float(3)/2 # 1.5
+(3.0)/(2.0) # 1.5
+3.0/2.0 #1.5
+float(3/2) # 1.0
+3/2 #1
+a = 4 ; b = 6 # ; makes many code lines at one line 
+float('inf') #infite 
+5%4 # % remainder . 5%4 = 1
+
+#some math functions
+"""
+abs() - absolute value
+sin() - Sin of ..
+cos() - Cos of ..
+floor() - round down
+ceil() - round up
+pow() - power aka **
+
+"""
+
+#String manupulation
+
+x = "sammas" # strings must be between " "
+y = x + "colkesen" # + means concat
+z = y + str(2019) # str() string type casting
+print(" %s makes good" %z) #%s makes replacement .# sammascolkesen2019 makes good
+#%f -- float, %d -- int, %.3f means y.xxxf
+
+x.upper() #SAMMAS
+x.lower() #sammas
+x.split()
+len(x) # returns the length of string . #6
+"sam" in "sammas" # in keyword checks if a value is within another value.True
+a = 5
+a in [3,4,6] #false
+
+
+#Identity operators
+a = [1, 2, 3]
+b = a
+a is b #True if a and b are identical objects
+a is not b # True if a and b are not identical objects
+a in b #True if a is a member of b
+a not in b #True if a is not a member of b
+
+print (2 not in [1, 2, 3])
+
+
+
+
+
+"""
+list    [1, 2, 3]   Ordered collection
+tuple   (1, 2, 3)   Immutable ordered collection
+
+dict    {'a':1, 'b':2, 'c':3} Unordered (key,value) mapping
+set {1, 2, 3}   Unordered collection of unique values
+"""
+
+
+
+mylist =[] #creating a list
+mylist = [2, "pretty"]
+mylist.append(33)  # adds 33 to end of list.[2, "pretty",33]
+mylist.insert(2,"good") # insert(index,value) .adds value to a location .[2, 'pretty', 'good', 33]
+mylist.pop(1) #remove and return the value at the location .pop(index).[2, 'good', 33]
+
+y = list("item") # converts item to a list.list(item).#
+
+
+
+
+ #list comprehensions
+data = [33,5,62,1,45,67]
+
+[i * 3 for i in data if i > 10]
+
+
+#create dict uzing zip
+keys = ["s", "h","hu"]
+values = [2,4,6]
+d = dict(zip(keys,values))
+
+
+#Stack
+myStack = [3,4,5]
+myStack.append(6) # Last ın
+myStack.pop() #Last out 3,4,5
+
+
+#Queue
+#FIFO
+from collections import deque
+myQueue = deque([1,2,3,4])
+myQueue.append(5)
+myQueue.popleft() #FIFO 2,3,4,5
+
+# ---------- TUPLES ----------
+# A Tuple is like a list, but their values can't be changed
+# Tuples are surrounded with parentheses instead of
+# square brackets
+ 
+myTuple = (1, 2, 3, 5, 8)
+ 
+# Get a value with an index
+print("1st Value :", myTuple[0])
+ 
+# Get a slice from the 1st index up to but not including
+# the 3rd
+print(myTuple[0:3])
+ 
+# Get the number of items in a Tuple
+print("Tuple Length :", len(myTuple))
+ 
+# Join or concatenate tuples
+moreFibs = myTuple + (13, 21, 34)
+ 
+# Check if a value is in a Tuple
+print("34 in Tuple :", 34 in moreFibs)
+ 
+# Iterate through a tuple
+for i in moreFibs:
+    print(i)
+ 
+# Convert a List into a Tuple
+aList = [55, 89, 144]
+aTuple = tuple(aList)
+ 
+# Convert a Tuple into a List
+aList = list(aTuple)
+ 
+# Get max and minimum value
+print("Min :", min(aTuple))
+print("Max :", max(aTuple))
+
+
+
+
+
+################################## ERROR ###########################
+
+"""
+Errors and Exceptions
+Syntax errors
+Errors where the code is not valid Python (generally easy to fix)
+Runtime errors
+Errors where syntactically valid code fails to execute, perhaps due to invalid user input (sometimes easy to fix)
+Semantic errors
+Errors in logic: code executes without a problem, but the result is not what you expect (often very difficult to identify and fix)
+"""
+#########################
+try:
+    print("try something here")
+except:
+    print("this happens only if it fails")
+    raise ("raise my message")
+else:
+    print("this happens only if it succeeds")
+finally:
+    print("this happens no matter what")
+    #################
+
+
+
+
+
+
+
+
+
+"""
+*args and **kwargs: Flexible Arguments
+Sometimes you might wish to write a function in which you don’t initially know how many arguments the user will pass.In this case, you can use the special form *args and **kwargs to catch all argu‐ ments that are passed. Here is an example:
+Here it is not the names args and kwargs that are important, but the * characters preceding them. args and kwargs are just the variable names often used by convention, short for “arguments” and “key‐ word arguments”. The operative difference is the asterisk characters: a single * before a variable means “expand this as a sequence”, while a double ** before a variable means “expand this as a dictionary”. In fact, this syntax can be used not only with the function definition,      but with the function call as well!
+
+"""
+def catch_all(*args, **kwargs):
+    print("args =", args)
+    print("kwargs = ", kwargs)
+catch_all(1, 2, 3, a=4, b=5)
+args = (1, 2, 3)
+kwargs = {'a': 4, 'b': 5}
+catch_all('a', keyword=2)
+args = ('a',)
+kwargs = {'keyword': 2}
+
+
+
+
+
+
+
+
+
 
 
 
