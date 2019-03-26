@@ -1,0 +1,75 @@
+Configuring Matplotlib
+
+•Global machine configuration file: This is used to configure Matplotlib for all the users of the machine.
+•User configuration file: A separate file for each user, where they can choose their own settings, overwriting the global configuration file (note that it will be used by that used any time the given user execute a Matplotlib-related code).
+•Configuration file in the current directory: Used for specific customization to the current script or program. This is particularly useful in situations when different programs have different needs, and using an external configuration file is better than hardcoding those settings in the code.
+•Python code in the current script or program or interactive session: To fine- tune settings only for that execution; this overwrites every configuration file.
+On a Linux system, the global configuration file is located at /etc/matplotlibrc, while the user configuration file is located in the users' home directory at $HOME/. matplotlib/matplotlibrc.
+On a Windows system, the user configuration file is located at C:\Documents and Settings\yourname\.matplotlib (there's no global configuration file).
+With these files and Matplotlib functions, we can control every property of your plots such as image size, colors, lines width, legends, and so on.
+
+
+
+
+
+
+
+
+
+Configuration files
+On a Debian system, /etc/matplotlibrc is the same configuration file shipped with an upstream tarball. It contains every possible configuration item (commented with a "#" character, if not currently set) along with a description of its purpose and usage.
+A look at that file will give you an idea of how much can be customized in Matplotlib.
+Since there are a lot of configuration settings, let's look at some of the ones that might be particularly interesting. One of the most important settings (and probably the first we would like to set up) is the backend:
+backend	: TkAgg
+TkAgg is the backend that should work without any additional dependency, since it uses Tkinter (available with Python itself). For the same reason, it is the default backend on some systems (such as Debian or Ubuntu).
+Here are some other settings:
+
+Setting	Description
+numerix	Specifies the numerical library to use. Nowadays, the one to use is
+numpy, but on older systems we can find Numeric or numarray.
+interactive	Specifies to enable the interactive mode (boolean).
+line.linewidth	Specifies the default line width (in points) used on plots.
+line.linecolor	Specifies the default line color used on plots.
+figure.figsize	Specifies the figure sizes, in inches.
+savefig.dpi	Specifies the DPI when saving to file.
+savefig.edgecolor	Specifies the edge color when saving to file.
+savefig.facecolor	Specifies the face color when saving to file.
+
+Configuring through the Python code
+Matplotlib provides a way to change the settings for the current session, be it a script or program or an interactive session with the Python interpreter or IPython.
+Let's first see how we can view the parameters currently set:
+$ ipython
+In [1]: import matplotlib as mpl In [2]: mpl.rcParams
+Out[2]:
+{'agg.path.chunksize': 0, 'axes.axisbelow': False, 'axes.edgecolor': 'k',
+'axes.facecolor': 'w',
+matplotlib.rcParams is a handy dictionary, global to the whole matplotlib module, which contains default configuration settings (overridden by matplotlibrc files, if present). We can modify this dictionary directly with code like this:
+mpl.rcParams['<param name>'] = <value>
+For example, with the following command, we set the figure size to 4x3 inches:
+In [3]: mpl.rcParams['figure.figsize'] = (4, 3)
+Matplotlib has a couple of useful functions to modify configuration parameters:
+•matplotlib.rcdefaults(): Restores Matplotlib's default configuration
+parameters values
+•matplotlib.rc(): Sets multiple settings in a single command
+For example, we can set the same property to more than one group (In this case,
+figure and savefig groups):
+mpl.rc(('figure', 'savefig'), facecolor='r')
+This is equivalent to:
+mpl.rcParam['figure.facecolor'] = 'r' mpl.rcParam['savefig.facecolor'] = 'r'
+This command sets facecolor to red for both the displayed image (figure) and the saved one (savefig). We can also set more parameters for the same group:
+mpl.rc('line', linewidth=4, linecolor='b')
+This line of code is equivalent to the following:
+mpl.rcParam['line.linewidth'] = 4 mpl.rcParam['line.linecolor'] = 'b'
+This code sets the line width to four points and line color to blue.
+Related to rc settings, there is the module matplotlib.rcsetup that contains
+the default Matplotlib parameter values and some validation functions to prevent spurious values from being used in a setting.
+
+Selecting backend from code
+Matplotlib has another configuration function, to select the backend to use at
+runtime, matplotlib.use():
+In [1]: import matplotlib as mpl
+In [2]: mpl.use('Agg') # to render to file, or to not use a graphical display
+In [3]: mpl.use('GTKAgg')	# to render to a GTK UI window
+
+
+Please note that the function matplotlib.use() must be called right after importing matplotlib for the first time, in particular before importing pylab or pyplot (or matplotlib.backends), or else it won't work.
